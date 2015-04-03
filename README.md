@@ -21,4 +21,5 @@ docker exec -ti rpmbuilder /bin/bash -c "rpmdev-setuptree"
 ```bash
 cp docker-rpmbuilder/php/php5.spec /data/rpmbuilder/SPECS/
 docker exec -ti rpmbuilder /bin/bash -c "spectool -g -R /root/rpmbuild/SPECS/php5.spec"
+docker exec -ti rpmbuilder /bin/bash -c "rpmbuild -bb /root/rpmbuild/SPECS/php5.spec"
 ```
