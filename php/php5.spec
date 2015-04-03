@@ -70,13 +70,14 @@ install -Dp -m0755 sapi/fpm/init.d.php-fpm %{buildroot}%{installdir}%{_initrddir
 ln -sf %{installdir}/bin/phar.phar %{buildroot}%{installdir}/bin/phar
 install -Dp -m0644 php.ini-production %{buildroot}%{installdir}/lib/php.ini
 
-for mod in curl gd mcrypt mysql mysqli pgsql xmlrpc xsl opcache \
+for mod in curl gd mcrypt mysql mysqli pgsql xmlrpc xsl \
     ; do
     cat > %{buildroot}%{installdir}/etc/conf.d/${mod}.ini <<EOF
 ; Enable ${mod} extension module
 extension=${mod}.so
 EOF
 done
+echo 'zend_extension=opcache.so' > %{buildroot}%{installdir}/etc/conf.d/opcache.ini
 
 rm -rf %{buildroot}%{installdir}/lib/php/extensions/*.a
 
