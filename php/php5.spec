@@ -95,6 +95,10 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %{installdir}
+%config            %{installdir}/etc/php-fpm.conf.default
+%config(noreplace) %{installdir}%{_initrddir}/php-fpm
+%config(noreplace) %{installdir}/lib/php.ini
+%config(noreplace) %attr(644,root,root) %{installdir}/etc/conf.d/*.ini
 
 %doc
 %changelog
